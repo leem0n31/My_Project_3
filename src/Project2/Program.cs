@@ -4,10 +4,6 @@ using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
 
-// удаление элемента
-//userId.Remove("+123456");
-
-
 using var cts = new CancellationTokenSource();
 var bot = new TelegramBotClient("7367399878:AAEr3bTJxrirWSq2i1rfTHPbP-PR04LrSuk", cancellationToken: cts.Token);
 var me = await bot.GetMeAsync();
@@ -24,13 +20,6 @@ cts.Cancel();
 async Task OnMessage(Message msg, UpdateType type)
 {
 
-
-    //   {
-    //       if (msg.Text is null) return;
-    //       Console.WriteLine($"Received {type} '{msg.Text}' in {msg.Chat}");
-    //   }
-
-
     if (msg.Text == "Проверка")
     {
         await bot.SendTextMessageAsync(msg.Chat, "Проверка бота: работа корректна");
@@ -39,17 +28,9 @@ async Task OnMessage(Message msg, UpdateType type)
     {
         await bot.SendTextMessageAsync(msg.Chat, "Здравствуйте");
     }
-    if (msg.Text == "Картинка")
-    {
-        await bot.SendPhotoAsync("1245700663", "https://avatars.mds.yandex.net/get-mpic/4113189/2a0000018f81c64e620ee265e2b9f7643df5/orig");
-    }
     if (msg.Text == "Видео")
     {
         await bot.SendVideoAsync("1245700663", "https://telegrambots.github.io/book/docs/video-countdown.mp4");
-    }
-    if (msg.Text == "Стикер")
-    {
-        await bot.SendStickerAsync("1245700663", "https://telegrambots.github.io/book/docs/sticker-fred.webp");
     }
     if (msg.Text == "/start")
     {
