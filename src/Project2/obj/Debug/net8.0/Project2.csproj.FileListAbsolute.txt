@@ -1,0 +1,17 @@
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.csproj.AssemblyReference.cache
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.AssemblyInfoInputs.cache
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.AssemblyInfo.cs
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.csproj.CoreCompileInputs.cache
+C:\Users\User\student\module\Project2\Project2\bin\Debug\net8.0\Project2.exe
+C:\Users\User\student\module\Project2\Project2\bin\Debug\net8.0\Project2.deps.json
+C:\Users\User\student\module\Project2\Project2\bin\Debug\net8.0\Project2.runtimeconfig.json
+C:\Users\User\student\module\Project2\Project2\bin\Debug\net8.0\Project2.dll
+C:\Users\User\student\module\Project2\Project2\bin\Debug\net8.0\Project2.pdb
+C:\Users\User\student\module\Project2\Project2\bin\Debug\net8.0\Telegram.Bot.dll
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.csproj.Up2Date
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.dll
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\refint\Project2.dll
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.pdb
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\Project2.genruntimeconfig.cache
+C:\Users\User\student\module\Project2\Project2\obj\Debug\net8.0\ref\Project2.dll
