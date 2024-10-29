@@ -36,65 +36,53 @@ async Task OnMessage(Message msg)
     {
         if (msg.Text == "/start")
         {
-            await bot.SendTextMessageAsync(msg.Chat.Id, "Введите ваше имя:");
+            await bot.SendTextMessageAsync(msg.Chat.Id, "Добро пожаловать в мир магических кредитов! Введите ваше имя:");
             return;
         }
 
         userNames[msg.Chat.Id] = msg.Text;
-        await bot.SendTextMessageAsync(msg.Chat.Id, $"Спасибо, {msg.Text}! Для того, чтобы попасть в мир Хогвартса напишите Авадакедабра");
+        await bot.SendTextMessageAsync(msg.Chat.Id, $"Спасибо, {msg.Text}! Для начала напишите 'Кредиты', чтобы узнать о доступных вариантах.");
         return;
     }
 
     var userName = userNames[msg.Chat.Id];
 
-    if (msg.Text == "Проверка")
+    if (msg.Text.ToLower() == "кредиты")
+    {
+        await bot.SendTextMessageAsync(msg.Chat.Id, "Выберите тип кредита:\n1. Кредит на метлу\n2. Кредит на обучение\n3. Кредит на зелья",
+            replyMarkup: new InlineKeyboardMarkup(new[]
+        {
+            InlineKeyboardButton.WithCallbackData("1"),
+            InlineKeyboardButton.WithCallbackData("2"),
+            InlineKeyboardButton.WithCallbackData("3"),
+            InlineKeyboardButton.WithCallbackData("Помощь"),
+        }));
+    }
+    else if (msg.Text.ToLower() == "проверка")
     {
         await bot.SendTextMessageAsync(msg.Chat.Id, $"{userName}, проверка бота: работа корректна");
-    }
-    else if (msg.Text == "Привет")
-    {
-        await bot.SendTextMessageAsync(msg.Chat.Id, $"Здравствуйте, {userName}!");
-    }
-    else if (msg.Text == "Видео")
-    {
-        await bot.SendVideoAsync(msg.Chat.Id, "https://telegrambots.github.io/book/docs/video-countdown.mp4");
-    }
-    else if (msg.Text == "Стикер")
-    {
-        await bot.SendStickerAsync(msg.Chat.Id, "https://telegrambots.github.io/book/docs/sticker-fred.webp");
-    }
-    else if (msg.Text == "Авадакедабра")
-    {
-        await bot.SendTextMessageAsync(msg.Chat.Id, $"Здравствуйте, {userName}!",
-             replyMarkup: new InlineKeyboardMarkup(new[]
-             {
-                 InlineKeyboardButton.WithCallbackData("Зелье неведимки"),
-                 InlineKeyboardButton.WithCallbackData("Зелье щита"),
-                 InlineKeyboardButton.WithCallbackData("Зелье урона"),
-                 InlineKeyboardButton.WithCallbackData("help"),
-             }));
     }
 }
 
 async Task OnCallbackQuery(CallbackQuery query)
 {
-    await bot.AnswerCallbackQueryAsync(query.Id, $"Вы выбрали {query.Data}");
+    await bot.AnswerCallbackQueryAsync(query.Id);
 
-    if (query.Data == "Зелье неведимки")
+    if (query.Data == "1")
     {
-        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Вы активировали зелье невидимки. Теперь вы сможете быть невидимым на 60 секунд.");
+        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Кредит на метлу: 1000 сиклей на 12 месяцев. Процентная ставка: 5%.");
     }
-    else if (query.Data == "Зелье щита")
+    else if (query.Data == "2")
     {
-        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Вы активировали зелье щита. Теперь вы не можете получать урон на 60 секунд.");
+        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Кредит на обучение: 1500 сиклей на 24 месяца. Процентная ставка: 4%.");
     }
-    else if (query.Data == "Зелье урона")
+    else if (query.Data == "3")
     {
-        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Вы активировали зелье урона. Теперь вы можете наносить в 2 раза больше урона на 60 секунд.");
+        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Кредит на зелья: 500 сиклей на 6 месяцев. Процентная ставка: 6%.");
     }
-    else if (query.Data == "help")
+    else if (query.Data == "Помощь")
     {
-        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Зелья нужны для битвы с боссом. Сделайте правильный выбор.");
+        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Для получения кредита вам нужно выбрать его тип. Напишите 'Кредиты', чтобы начать.");
     }
 }
 
