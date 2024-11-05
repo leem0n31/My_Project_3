@@ -49,18 +49,23 @@ async Task OnMessage(Message msg)
 
     if (msg.Text.ToLower() == "кредиты")
     {
-        await bot.SendTextMessageAsync(msg.Chat.Id, "Выберите тип кредита:\n1. Кредит на метлу\n2. Кредит на обучение\n3. Кредит на зелья",
+        await bot.SendTextMessageAsync(msg.Chat.Id, "Выберите тип кредита:\n1. Кредит на метлу\n2. Кредит на обучение\n3. Кредит на зелья\n4. Базовые функции бота\n5. Помощь",
             replyMarkup: new InlineKeyboardMarkup(new[]
         {
             InlineKeyboardButton.WithCallbackData("1"),
             InlineKeyboardButton.WithCallbackData("2"),
             InlineKeyboardButton.WithCallbackData("3"),
-            InlineKeyboardButton.WithCallbackData("Помощь"),
+            InlineKeyboardButton.WithCallbackData("4"),
+            InlineKeyboardButton.WithCallbackData("5"),
         }));
+    }
+    else if (msg.Text.ToLower() == "привет")
+    {
+        await bot.SendTextMessageAsync(msg.Chat.Id, $"Привет, {userName}!");
     }
     else if (msg.Text.ToLower() == "проверка")
     {
-        await bot.SendTextMessageAsync(msg.Chat.Id, $"{userName}, проверка бота: работа корректна");
+        await bot.SendTextMessageAsync(msg.Chat.Id, "Проверка: бот работает.");
     }
 }
 
@@ -80,7 +85,11 @@ async Task OnCallbackQuery(CallbackQuery query)
     {
         await bot.SendTextMessageAsync(query.Message.Chat.Id, "Кредит на зелья: 500 сиклей на 6 месяцев. Процентная ставка: 6%.");
     }
-    else if (query.Data == "Помощь")
+    else if (query.Data == "4")
+    {
+        await bot.SendTextMessageAsync(query.Message.Chat.Id, "Базовые функции бота:\n1. Проверка - проверить работоспособность бота\n2. Привет - поздороваться с ботом");
+    }
+    else if (query.Data == "5")
     {
         await bot.SendTextMessageAsync(query.Message.Chat.Id, "Для получения кредита вам нужно выбрать его тип. Напишите 'Кредиты', чтобы начать.");
     }
